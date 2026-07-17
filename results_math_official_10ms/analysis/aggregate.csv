@@ -1,0 +1,13 @@
+condition,metric,mean,sd,n
+chatbot,latency_s,2.6850594990712127,0.7066923986950635,15
+chatbot,avg_process_cpu_percent,41.73921347739919,4.301725947419425,15
+chatbot,peak_process_cpu_percent,125.58666666666666,10.593182893234866,15
+chatbot,cpu_time_s,1.1295994966282723,0.3418062014843515,15
+chatbot,llm_calls,1.0,0.0,15
+chatbot,tool_calls,0.0,0.0,15
+agent,latency_s,2.292974370401741,1.2299535327331954,15
+agent,avg_process_cpu_percent,65.1916365794606,13.365074843128774,15
+agent,peak_process_cpu_percent,234.2866666666667,30.616682349582508,15
+agent,cpu_time_s,1.364758044952115,0.573661049561331,15
+agent,llm_calls,2.0,0.0,15
+agent,tool_calls,1.0,0.0,15

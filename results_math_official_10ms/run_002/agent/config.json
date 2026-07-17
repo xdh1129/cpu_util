@@ -1,0 +1,11 @@
+{
+  "condition": "agent",
+  "run_id": "run_002",
+  "workload": "workloads/math_official_test_subset_5.jsonl",
+  "output_root": "results_math_official_10ms",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "gemma4",
+  "sample_interval": 0.01,
+  "warmup": 1,
+  "limit": 5
+}

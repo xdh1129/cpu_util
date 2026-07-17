@@ -220,7 +220,7 @@ def agent(
             {
                 "role": "system",
                 "content": (
-                    "Solve the problem. Use the calculator tool for arithmetic, "
+                    "Your first response MUST be exactly one calculator tool call. The expression MUST be valid Python numeric arithmetic: numbers and + - * / ** sqrt gcd ceil floor only; no variables, equations, or ^. Choose a useful numeric calculation; if none applies, call expression 0. Do not solve yet. "
                     "then give a concise final answer."
                 ),
             },
