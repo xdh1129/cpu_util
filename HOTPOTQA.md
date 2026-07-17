@@ -19,7 +19,7 @@ or full-wiki retrieval. Five examples are enough for the CPU experiment but not
 for reporting an official HotpotQA accuracy score.
 
 ```bash
-.venv/bin/python scripts/prepare_hotpotqa.py
-bash scripts/reproduce_hotpotqa_10ms.sh
-.venv/bin/python plot_hotpotqa_10ms.py
+.venv/bin/python scripts/data/prepare_hotpotqa.py
+bash scripts/experiment/reproduce_hotpotqa_10ms.sh
+.venv/bin/python scripts/analysis/plot_hotpotqa_10ms.py
 ```

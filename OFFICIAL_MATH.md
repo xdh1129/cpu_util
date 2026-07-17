@@ -15,13 +15,13 @@ Prepare the pinned workload:
 
 ```bash
 .venv/bin/pip install -r requirements-data.txt
-.venv/bin/python scripts/prepare_official_math.py
+.venv/bin/python scripts/data/prepare_official_math.py
 ```
 
 Run the same three-repeat experiment with a requested 10 ms sample interval:
 
 ```bash
-bash scripts/reproduce_official_math_10ms.sh
+bash scripts/experiment/reproduce_official_math_10ms.sh
 ```
 
 Each JSONL record contains its reference solution and complete source identity.

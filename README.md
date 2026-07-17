@@ -43,26 +43,26 @@ hf auth login
 Run the server in one terminal:
 
 ```bash
-scripts/serve_gemma4.sh
+scripts/serving/serve_gemma4.sh
 ```
 
 Select a different physical GPU if needed:
 
 ```bash
-CUDA_VISIBLE_DEVICES=1 scripts/serve_gemma4.sh
+CUDA_VISIBLE_DEVICES=1 scripts/serving/serve_gemma4.sh
 ```
 
 Validate it from another terminal:
 
 ```bash
-scripts/smoke_test.sh
+scripts/serving/smoke_test.sh
 ```
 
 Capture machine and software metadata with each experimental run:
 
 ```bash
 source .venv/bin/activate
-python scripts/capture_environment.py results/run_name/environment.json
+python scripts/utils/capture_environment.py results/run_name/environment.json
 ```
 
 Do not collect measured trials during initial model loading, kernel

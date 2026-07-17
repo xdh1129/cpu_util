@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "${ROOT_DIR}"
 PYTHON="${VENV_DIR:-${ROOT_DIR}/.venv}/bin/python"
 REPEATS="${REPEATS:-3}"
@@ -12,12 +12,12 @@ curl --fail --silent --max-time 5 \
 
 for repeat in $(seq 1 "${REPEATS}"); do
   run_id="run_$(printf '%03d' "${repeat}")"
-  "${PYTHON}" scripts/capture_environment.py \
+  "${PYTHON}" scripts/utils/capture_environment.py \
     "results/${run_id}/environment.json"
-  "${PYTHON}" experiment.py \
+  "${PYTHON}" scripts/experiment/experiment.py \
     --condition chatbot --run-id "${run_id}" --limit "${LIMIT}"
-  "${PYTHON}" experiment.py \
+  "${PYTHON}" scripts/experiment/experiment.py \
     --condition agent --run-id "${run_id}" --limit "${LIMIT}"
 done
 
-"${PYTHON}" analyze.py --run-prefix run_
+"${PYTHON}" scripts/analysis/analyze.py --run-prefix run_
