@@ -1,0 +1,6 @@
+request_id,condition,latency_s,avg_process_cpu_percent,peak_process_cpu_percent,llm_calls,tool_calls
+agent_001,agent,0.7316178519977257,85.05319148936171,260.2,2,1
+agent_002,agent,1.001548272994114,70.33125,257.4,2,1
+agent_003,agent,0.9481905929860659,81.158,207.4,2,1
+agent_004,agent,0.7737623649882153,81.708,195.2,2,1
+agent_005,agent,0.9158940369961783,72.37457627118644,259.0,2,1

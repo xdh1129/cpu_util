@@ -1,0 +1,6 @@
+request_id,condition,latency_s,avg_process_cpu_percent,peak_process_cpu_percent,llm_calls,tool_calls
+chatbot_001,chatbot,0.11945352700422518,32.0625,65.1,1,0
+chatbot_002,chatbot,0.3445683539903257,32.768181818181816,131.6,1,0
+chatbot_003,chatbot,0.4322508379991632,34.378571428571426,131.2,1,0
+chatbot_004,chatbot,0.27872680200380273,41.6875,103.7,1,0
+chatbot_005,chatbot,0.26508017600281164,34.28823529411765,129.2,1,0
