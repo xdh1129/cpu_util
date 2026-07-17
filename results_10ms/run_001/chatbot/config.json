@@ -1,0 +1,11 @@
+{
+  "condition": "chatbot",
+  "run_id": "run_001",
+  "workload": "workloads/math_experiment.jsonl",
+  "output_root": "results_10ms",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "gemma4",
+  "sample_interval": 0.01,
+  "warmup": 1,
+  "limit": 5
+}
