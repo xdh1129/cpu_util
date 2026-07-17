@@ -1,0 +1,4 @@
+# Core serving environment used for this experiment.
+# vLLM pins its compatible PyTorch, CUDA, and serving dependencies.
+vllm==0.25.1
+
