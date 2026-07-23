@@ -1,0 +1,13 @@
+{
+  "benchmark": "hotpotqa",
+  "condition": "chatbot",
+  "run_id": "run_002",
+  "workload": "workloads/hotpotqa_distractor_dev_subset_5.jsonl",
+  "output_root": "results_hotpotqa_metrics_10ms",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "gemma4",
+  "sample_interval": 0.01,
+  "kv_sample_interval": 0.01,
+  "warmup": 1,
+  "limit": 5
+}

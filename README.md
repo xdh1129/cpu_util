@@ -71,3 +71,12 @@ not representative of steady-state request execution.
 
 The detailed research design is in
 [`cpu_timeline_experiment_design.md`](cpu_timeline_experiment_design.md).
+
+## Four-benchmark run
+
+The current reproducible suite covers official pinned subsets of MATH,
+HotpotQA, HumanEval, and WebShop. It records client-process CPU every 10 ms,
+OpenAI-compatible prompt/completion token usage, and vLLM's server-wide
+`vllm:kv_cache_usage_perc` gauge every 10 ms. See
+[`experiment_report_four_benchmarks_10ms.md`](experiment_report_four_benchmarks_10ms.md)
+for definitions, limitations, and results.

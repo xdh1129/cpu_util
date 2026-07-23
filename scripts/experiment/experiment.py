@@ -64,6 +64,7 @@ class CpuSampler(threading.Thread):
     def run(self) -> None:
         known: dict[int, psutil.Process] = {}
         psutil.cpu_percent(None)
+        deadline = time.perf_counter()
         while not self.stopping.is_set():
             processes = [self.root]
             try:
@@ -92,7 +93,12 @@ class CpuSampler(threading.Thread):
                     "system_cpu_percent": psutil.cpu_percent(None),
                 }
             )
-            self.stopping.wait(self.interval)
+            deadline += self.interval
+            delay = deadline - time.perf_counter()
+            if delay <= 0:
+                deadline = time.perf_counter()
+                delay = 0
+            self.stopping.wait(delay)
 
     def stop(self) -> None:
         self.stopping.set()

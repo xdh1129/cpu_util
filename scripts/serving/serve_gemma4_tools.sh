@@ -16,6 +16,7 @@ exec "${VENV_DIR}/bin/vllm" serve \
   --dtype bfloat16 \
   --max-model-len "${MAX_MODEL_LEN:-8192}" \
   --gpu-memory-utilization "${GPU_MEMORY_UTILIZATION:-0.85}" \
+  --kv-cache-memory-bytes "${KV_CACHE_MEMORY_BYTES:-25769803776}" \
   --served-model-name "${SERVED_MODEL_NAME:-gemma4}" \
   --moe-backend triton \
   --tool-call-parser gemma4 \
