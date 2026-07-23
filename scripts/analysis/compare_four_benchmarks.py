@@ -16,6 +16,7 @@ ROOTS = {
 }
 METRICS = ["total_tokens", "peak_kv_cache_usage_fraction", "avg_process_cpu_percent", "latency_s"]
 KV_CACHE_BYTES = 25_769_803_776
+LOGICAL_CPUS = 64
 
 
 def main() -> None:
@@ -29,14 +30,16 @@ def main() -> None:
             row.update({metric: aggregate[condition][metric]["mean"] for metric in METRICS})
             row["mean_peak_kv_mib"] = row["peak_kv_cache_usage_fraction"] * KV_CACHE_BYTES / 2**20
             row["mean_peak_kv_gib"] = row["peak_kv_cache_usage_fraction"] * KV_CACHE_BYTES / 2**30
+            row["mean_client_cpu_total_percent"] = row["avg_process_cpu_percent"] / LOGICAL_CPUS
             rows.append(row)
     with (output / "comparison.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader(); writer.writerows(rows)
     figure, axes = plt.subplots(2, 2, figsize=(12, 8))
-    titles = ["Mean total tokens", "Mean request peak KV cache", "Mean client CPU", "Mean latency"]
-    labels = ["tokens", "KV cache (MiB)", "% of one CPU core", "seconds"]
-    for axis, metric, title, label in zip(axes.flat, METRICS, titles, labels):
+    plot_metrics = ["total_tokens", "peak_kv_cache_usage_fraction", "mean_client_cpu_total_percent", "latency_s"]
+    titles = ["Mean total tokens", "Mean request peak KV cache", "Mean client CPU (64 logical CPUs)", "Mean latency"]
+    labels = ["tokens", "KV cache (MiB)", "Total CPU capacity (%)", "seconds"]
+    for axis, metric, title, label in zip(axes.flat, plot_metrics, titles, labels):
         factor = KV_CACHE_BYTES / 2**20 if metric == "peak_kv_cache_usage_fraction" else 1
         x = range(len(ROOTS)); width = 0.36
         for offset, condition in ((-width / 2, "chatbot"), (width / 2, "agent")):
