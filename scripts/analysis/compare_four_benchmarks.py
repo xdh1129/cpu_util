@@ -35,9 +35,9 @@ def main() -> None:
         writer.writeheader(); writer.writerows(rows)
     figure, axes = plt.subplots(2, 2, figsize=(12, 8))
     titles = ["Mean total tokens", "Mean request peak KV cache", "Mean client CPU", "Mean latency"]
-    labels = ["tokens", "% allocated blocks", "% of one CPU core", "seconds"]
+    labels = ["tokens", "KV cache (MiB)", "% of one CPU core", "seconds"]
     for axis, metric, title, label in zip(axes.flat, METRICS, titles, labels):
-        factor = 100 if metric == "peak_kv_cache_usage_fraction" else 1
+        factor = KV_CACHE_BYTES / 2**20 if metric == "peak_kv_cache_usage_fraction" else 1
         x = range(len(ROOTS)); width = 0.36
         for offset, condition in ((-width / 2, "chatbot"), (width / 2, "agent")):
             values = [next(r[metric] for r in rows if r["benchmark"] == b and r["condition"] == condition) * factor for b in ROOTS]

@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 
 
 IDENTITY = {"request_id", "condition"}
+KV_CACHE_BYTES = 25_769_803_776
 
 
 def main() -> None:
@@ -88,13 +89,14 @@ def main() -> None:
         aggregate[c]
         .get("peak_kv_cache_usage_fraction", {})
         .get("mean", 0.0)
-        * 100
+        * KV_CACHE_BYTES
+        / 2**20
         for c in conditions
     ]
     axes[1].bar(conditions, kv)
     axes[1].set(
         title="Mean per-request peak KV-cache usage",
-        ylabel="Allocated KV blocks (%)",
+        ylabel="KV cache (MiB)",
     )
     figure.tight_layout()
     figure.savefig(args.output / "tokens_kv_summary.png", dpi=200)
